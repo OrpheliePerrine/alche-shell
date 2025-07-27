@@ -1,0 +1,2 @@
+#!/bin/bash
+while IFS= read -r l; do echo "$l"; last="$l"; done < iacta; echo "$last"
