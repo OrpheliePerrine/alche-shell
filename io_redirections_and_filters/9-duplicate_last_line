@@ -1,2 +1,2 @@
 #!/bin/bash
-while IFS= read -r l; do echo "$l"; last="$l"; done < iacta; echo "$last"
+tail -n 1 iacta >> iacta
