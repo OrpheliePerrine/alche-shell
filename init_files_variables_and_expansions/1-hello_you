@@ -1,0 +1,2 @@
+#!/bin/bash
+for id user in . do echo "hello user" done
