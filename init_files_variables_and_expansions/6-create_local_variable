@@ -1,2 +1,2 @@
 #!/bin/bash
-print_local_var() { local BEST="School" echo "BEST=$BEST" } echo "BEST=$BEST"
+print_local_var() local BEST="School" echo "BEST=$BEST"
