@@ -1,2 +1,2 @@
 #!/bin/bash
-export TRUEKNOWLEDGE export NUM=$((TRUEKNOWLEDGE + 128)) echo $NUM
+export NUM=TRUEKNOWLEDGE export NUM=$((NUM + 128)) echo $NUM
