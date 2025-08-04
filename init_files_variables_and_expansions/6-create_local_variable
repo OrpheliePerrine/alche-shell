@@ -1,2 +1,2 @@
 #!/bin/bash
-print_local_var() local BEST="School" echo "BEST=$BEST"
+#!/bin/bash; create_local_var() { local BEST="School"; echo "Inside function: BEST = $BEST"; }; create_local_var; echo "Outside function: BEST = $BEST"
