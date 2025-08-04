@@ -1,0 +1,2 @@
+#!/bin/bash
+for l1 in {a..z} do for l2 in {a..z} do combo=$l1$l2 [[ "$combo" < "aa" || "$combo" == "oo" ]]  continue output+="$combo"$'\n' (( ${#output} > 64 ))  break 2 done done echo -n "${output:0:64}"
