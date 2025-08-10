@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#using while loop for time
+
+hour=0
+while [ $hour -le 20 ]
+do
+
+minute=1
+while [ $minute -le 59 ]
+do
+
+echo "$hour : $minute"
+minute=$((minute + 1))
+done
