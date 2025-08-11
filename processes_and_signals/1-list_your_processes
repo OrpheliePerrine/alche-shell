@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 #listing processes
-ps -eo uid,args --forest
+echo "UID"
+echo "0 awk \$1, \$9,"
 
