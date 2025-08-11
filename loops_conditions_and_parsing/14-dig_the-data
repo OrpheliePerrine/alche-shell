@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-#awk
+# Script to count and sort visitor IPs and HTTP codes from apache-access.log
 
-awk '$9 ~ /^[0-9]+$/ { print $1, $9 }' apache-access.log | \
-uniq -c | \
-sort -rn | \
-awk '{printf "%8s %s %s\n", $1, $2, $3}'
+awk '
+  $9 ~ /^[0-9]+$/ { print $1, $9 }
+' apache-access.log | sort | uniq -c | sort -rn | awk '{printf "%8s %s %s\n", $1, $2, $3}'
