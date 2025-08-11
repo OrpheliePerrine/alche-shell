@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
 #awk
 
-awk '{print $1, $9}' apache-access.log
+# Check if file exists and is readable
+if [[ ! -r "apache-access.log" ]]; then
+    echo "Error: apache-access.log file not found or not readable."
+    exit 1
+fi
+
+# Use awk to print IP and HTTP code only if both fields exist
+awk '
+NF >= 9 { print $1, $9 }
+' apache-access.log
