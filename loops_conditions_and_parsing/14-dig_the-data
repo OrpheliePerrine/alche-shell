@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#awk
+awk '
+  $9 ~ /^[0-9]+$/ {
+    count[$1, $9]++
+  }
+  END {
+    for (key in count) {
+      split(key, arr, SUBSEP)
+      printf "%8d %s %s\n", count[key], arr[1], arr[2]
+    }
+  }
+' apache-access.log | sort -rn
