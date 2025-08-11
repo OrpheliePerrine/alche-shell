@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #listing content
 for file in *; do
-    # Skip if it’s a directory or no dash found
-    if [[ -f "$file" && "$file" == *-* ]]; then
-        # Extract part after first dash
-        echo "${file#*-}"
-    fi
+    
+    [[ "$file" == .* ]] && continue
+
+       echo "${file#*-}"
+   
 done
