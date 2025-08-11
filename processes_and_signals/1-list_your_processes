@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 #listing processes
-ps -ef --forest
+ps -eo uid,args --forest
+
