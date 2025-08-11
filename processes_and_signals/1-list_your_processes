@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #listing processes
 echo "UID"
-echo "0 awk \$1, \$9,"
+echo "$UID"
 
