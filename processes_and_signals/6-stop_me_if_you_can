@@ -4,7 +4,6 @@
 for pid in /proc/[0-9]*; do
     if [[ -f "$pid/comm" ]] && grep -q "4-to_infinity_and_beyond" "$pid/cmdline"; then
 
-        echo "Stopping process $pid..."
-        echo q > "/proc/$pid/fd/0" 2>/dev/null
+        bash -c "kill -15 $((pid##*/))" 2>/dev/null
     fi
 done
