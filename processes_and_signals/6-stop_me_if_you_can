@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Stop the 4-to_infinity_and_beyond script
+
+for pid in /proc/[0-9]*; do
+    if [[ -f "$pid/comm" ]] && grep -q "4-to_infinity_and_beyond" "$pid/cmdline"; then
+
+        echo "Stopping process $pid..."
+        echo q > "/proc/$pid/fd/0" 2>/dev/null
+    fi
+done
