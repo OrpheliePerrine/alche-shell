@@ -3,14 +3,16 @@
 
 PIDFILE="/var/run/myscript.pid"
 
-# Write own PID to the file
 echo "$$" > "$PIDFILE"
 
-trap 'echo "I hate the kill command"' SIGTERM
-trap 'echo "Y U no love me?!"' SIGINT
-trap 'rm -f "$PIDFILE"; exit' SIGQUIT SIGTERM
-
+# Infinite loop printing the message
 while true; do
     echo "To infinity and beyond"
     sleep 2
-done
+done & 
+
+trap 'echo "Y U no love me?!"' SIGINT
+trap 'echo "I hate the kill command"' SIGTERM
+trap 'rm -f "$PIDFILE"; kill 0' SIGQUIT
+
+wait
