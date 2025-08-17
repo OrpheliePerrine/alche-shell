@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Kill the 7-highlander process
+
+for pid in /proc/[0-9]*; do
+    cmd=$(tr '\0' ' ' < "$pid/cmdline" 2>/dev/null)
+    if [[ $cmd == *"/7-highlander"* ]]; then
+        kill -9 "$((pid##*/))" 2>/dev/null
+    fi
+done
