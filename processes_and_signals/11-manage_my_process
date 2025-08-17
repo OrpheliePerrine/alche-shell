@@ -5,8 +5,8 @@ PIDFILE="/var/run/my_process.pid"
 SCRIPT_PATH="$(dirname "$0")/manage_my_process"
 
 start_process() {
-    "$SCRIPT_PATH" &              # Start in background
-    echo $! > "$PIDFILE"          # Save its PID
+    nohup "$SCRIPT_PATH" >/dev/null 2>&1 &   # Detached background process
+    echo $! > "$PIDFILE"
 }
 
 stop_process() {
