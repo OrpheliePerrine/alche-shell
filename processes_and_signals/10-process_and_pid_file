@@ -5,14 +5,19 @@ PIDFILE="/var/run/myscript.pid"
 
 echo "$$" > "$PIDFILE"
 
+# Function to clean up and exit
+cleanup() {
+    rm -f "$PIDFILE"
+    exit
+}
+
+# Trap signals
+trap 'echo "Y U no love me?!"' SIGINT
+trap 'echo "I hate the kill command"; cleanup' SIGTERM
+trap 'cleanup' SIGQUIT
+
 # Infinite loop printing the message
 while true; do
     echo "To infinity and beyond"
     sleep 2
-done & 
-
-trap 'echo "Y U no love me?!"' SIGINT
-trap 'echo "I hate the kill command"' SIGTERM
-trap 'rm -f "$PIDFILE"; kill 0' SIGQUIT
-
-wait
+done
