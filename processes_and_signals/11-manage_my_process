@@ -5,9 +5,8 @@ PIDFILE="/var/run/my_process.pid"
 SCRIPT_PATH="$(dirname "$0")/manage_my_process"
 
 start_process() {
-    "$SCRIPT_PATH" &               # Start in background
-    echo $! > "$PIDFILE"           # Save its PID
-    echo "manage_my_process started"
+    "$SCRIPT_PATH" &              # Start in background
+    echo $! > "$PIDFILE"          # Save its PID
 }
 
 stop_process() {
@@ -15,23 +14,24 @@ stop_process() {
         kill "$(cat "$PIDFILE")" 2>/dev/null
         rm -f "$PIDFILE"
     fi
-    echo "manage_my_process stopped"
 }
 
 case "$1" in
     start)
         start_process
+        echo "manage_my_process started"
         ;;
     stop)
         stop_process
+        echo "manage_my_process stopped"
         ;;
     restart)
-        stop_process
-        start_process
+        stop_process                # Stop silently
+        start_process               # Start silently
         echo "manage_my_process restarted"
         ;;
     *)
         echo "Usage: manage_my_process {start|stop|restart}"
         ;;
 esac
-`
+
