@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 # This script displays all running processes in a user-oriented format with hierarchy
 
-ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --forest
+ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,lstart,time,command --forest | \
+    awk 'NR==1 { $5="STARTED"; for(i=1;i<=NF;i++) printf "%s%s",$i,(i<NF?" ":"\n"); next } { print }'
+
