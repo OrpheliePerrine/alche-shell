@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #listing processes
-ps -euf --forest
+ps -eo uid,pid,ppid,tty,stat,start,time,command --forest
