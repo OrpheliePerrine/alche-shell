@@ -34,7 +34,3 @@ case "$1" in
         echo "Usage: manage_my_process {start|stop|restart}"
         ;;
 esac
-exec while true; do
-    echo "I am alive!" >> /tmp/my_process
-    sleep 2
-done
